@@ -28,9 +28,17 @@ jobs:
     - name: Docker login
       run: echo ${{secrets.TOKEN}} | docker login ghcr.io -u $GITHUB_ACTOR --password-stdin
 
-
     - name: publish to GPR
       run: docker --debug push ghcr.io/$(echo $GITHUB_ACTOR | tr '[:upper:]' '[:lower:]')/pornstar:v1
+
+    - name: retag the image for docker.io
+      run: docker tag my-image-name:v1 momosarhan/pornstar:v1
+
+    - name: login to docker.io
+      run: echo ${{secrets.DockerToken}} | docker login -u momosarhan --password-stdin
+
+    - name: push image to docker.io
+      run: docker push momosarhan/pornstar:v1 
 
     - name: clean the cache
       run: docker system prune -a --volumes
