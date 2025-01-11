@@ -1,0 +1,15 @@
+{% extends "base.html" %} {% block content %}
+<html>
+  <head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    {% for img in images%}
+    <img src="/media2/{{img}}" alt="not found" />
+    {% endfor %} {% for pornstar in pornstars%}
+    <a href="/page/porn/?value={{pornstar}}">{{pornstar}}</a><br />
+    {% endfor %}
+  </body>
+</html>
+{% endblock content %}

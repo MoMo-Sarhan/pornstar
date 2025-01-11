@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pornstar List</title>
+  </head>
+  <style>
+    img {
+      max-width: 300px;
+      height: auto;
+      position: relative;
+      border-radius: 30px;
+    }
+  </style>
+  <body background-color="black">
+    <h1>List of Pornstars</h1>
+    {% for pornstar in pornstars %}
+    <a href="/?pornstar={{pornstar.name}}">
+      <img src="{{ pornstar.image_link}}" alt="{{pornstar.name}}"
+    /></a>
+    {% endfor %}
+  </body>
+</html>

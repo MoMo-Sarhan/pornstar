@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Gallery</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <!-- Link to external CSS -->
+  </head>
+  <body>
+    <ul class="gallery">
+      {% for img in images %}
+      <li class="gallery-item">
+        <img src="/media2/{{img}}" alt="Image 1" />
+      </li>
+      {% endfor %}
+      <!-- Add more images here -->
+    </ul>
+  </body>
+</html>
+{% endblock content %}

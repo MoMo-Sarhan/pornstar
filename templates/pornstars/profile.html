@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ pornstar.name }}'s Profile</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        color: white;
+        background-color: black;
+      }
+      .profile-container {
+        max-width: 1500px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .profile-container img {
+        max-width: 200px;
+        height: auto;
+        border-radius: 30px;
+        top: 20px;
+        left: 20px;
+        position: relative;
+
+      }
+      .profile-details {
+        margin-top: 20px;
+      }
+      .profile-details p {
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="profile-container">
+      <h1>{{ pornstar.name }}'s Profile</h1
+
+      <!-- Display the image if available -->
+      {% if pornstar.image_link %}
+      <a href="{{ pornstar.image_link.url}}"
+        ><img
+          src="{{ pornstar.image_link.url }}"
+          alt="{{ pornstar.image_link.url}} not found"
+      /></a>
+      {% endif %}
+
+      <div class="profile-details">
+        <p><strong>Age:</strong> {{ pornstar.age }}</p>
+        <p><strong>Height:</strong> {{ pornstar.height }} cm</p>
+        <p><strong>Eye Color:</strong> {{ pornstar.eye_color }}</p>
+        <p><strong>Hair Color:</strong> {{ pornstar.hair_color }}</p>
+        <p><strong>Sex:</strong> {{ pornstar.sex }}</p>
+        {% for category in categories%}
+        <a href="/?pornstar={{category}}">{{category}}</a>
+        {% endfor %}
+        <p><strong>Categories:</strong> {{ pornstar.catigories }}</p>
+        <p>
+          <strong>Relative Categories:</strong> {{ pornstar.relative_catigories
+          }}
+        </p>
+        <p>
+          <strong>Alive:</strong> 
+          {% if pornstar.isalive %} Yes {% else %} No {% endif %}
+        </p>
+      </div>
+      <div>
+        {% for image in images %}
+        <a href="/media2/{{image}}"><img src="/media2/{{image}}" /></a>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>
