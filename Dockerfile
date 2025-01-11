@@ -1,5 +1,7 @@
 from django:latest
 volume /media2/.image-sex
 copy . /app 
+workdir /app
+run pip install -r requirment.txt
 entrypoint [ "python" ]
-cmd ["/app/manage.py","runserver","0.0.0.0:8000"]
+cmd ["manage.py","runserver","0.0.0.0:8000"]
