@@ -1,4 +1,4 @@
-from django:latest
+from python:latest
 volume /media2/.image-sex
 copy . /app 
 workdir /app
