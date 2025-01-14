@@ -4,6 +4,7 @@ COPY . /app
 WORKDIR /app
 RUN pip install -r requirment.txt
 EXPOSE 80 
+VOLUME /app/db.sqlite3
 EXPOSE 8000
 ENTRYPOINT [ "python" ]
 CMD ["manage.py","runserver","0.0.0.0:80"]

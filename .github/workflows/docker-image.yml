@@ -17,10 +17,10 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Build the Docker image
-      run: docker  build --no-cache . -f Dockerfile --tag my-image-name:v1
+      run: docker  build --no-cache . -f Dockerfile --tag my-image-name:v2
 
     - name: retag the image
-      run: docker tag my-image-name:v1 ghcr.io/$(echo $GITHUB_ACTOR|tr '[:upper:]' '[:lower:]')/pornstar:v1
+      run: docker tag my-image-name:v2 ghcr.io/$(echo $GITHUB_ACTOR|tr '[:upper:]' '[:lower:]')/pornstar:v2
 
     - name: echo token
       run: echo ${{secrets.TOKEN}} "not sure"
@@ -29,16 +29,16 @@ jobs:
       run: echo ${{secrets.TOKEN}} | docker login ghcr.io -u $GITHUB_ACTOR --password-stdin
 
     - name: publish to GPR
-      run: docker --debug push ghcr.io/$(echo $GITHUB_ACTOR | tr '[:upper:]' '[:lower:]')/pornstar:v1
+      run: docker --debug push ghcr.io/$(echo $GITHUB_ACTOR | tr '[:upper:]' '[:lower:]')/pornstar:v2
 
     - name: retag the image for docker.io
-      run: docker tag my-image-name:v1 momosarhan/pornstar:v1
+      run: docker tag my-image-name:v2 momosarhan/pornstar:v2
 
     - name: login to docker.io
       run: echo ${{secrets.DockerToken}} | docker login -u momosarhan --password-stdin
 
     - name: push image to docker.io
-      run: docker push momosarhan/pornstar:v1 
+      run: docker push momosarhan/pornstar:v2 
 
     - name: clean the cache
       run: docker system prune -a --volumes
